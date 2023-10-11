@@ -25,11 +25,11 @@ main {
 }
 
 .player1 {
-  background-color: rgba(245, 245, 220, 0.469);
+  background-color: #8de89f;
 }
 
 .player2 {
-  background-color: rgba(210, 210, 57, 0.469);
+  background-color: #f9f9715d;
 }
 
 .player--wrap {
