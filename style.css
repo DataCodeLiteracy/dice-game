@@ -117,3 +117,14 @@ main {
   width: 90px;
   height: 90px;
 }
+
+.dice-img {
+  display: none;
+}
+
+.dice-img.active {
+  display: block;
+}
+
+.player1 .current--score {
+}
