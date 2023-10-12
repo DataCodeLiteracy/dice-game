@@ -22,15 +22,6 @@ let p2TotalScore = 0
 
 let playerTurn = true // true : p1, false: p2
 
-const gameOver = () => {
-  p1CurrentScore = 0
-  p1AccumulateScore = 0
-  p1TotalScore = 0
-  p2CurrentScore = 0
-  p2AccumulateScore = 0
-  p2TotalScore = 0
-}
-
 const newGame = () => {
   newGameBtn.addEventListener('click', () => {
     p1CurrentScore = 0
@@ -40,7 +31,7 @@ const newGame = () => {
     p2AccumulateScore = 0
     p2TotalScore = 0
 
-    diceImgElem.classList.remove('active')
+    diceImgElem.classList.remove('visible')
     p1CurrentScoreElem.innerHTML = 0
     p2CurrentScoreElem.innerHTML = 0
     p1TotalScoreElem.innerHTML = 0
@@ -56,7 +47,7 @@ const newGame = () => {
 }
 
 const changeColor = () => {
-  if (p1TotalScore >= 10 || p2TotalScore >= 10) {
+  if (p1TotalScore >= 50 || p2TotalScore >= 50) {
     if (!playerTurn) {
       p1SectionElem.style.backgroundColor = 'black'
       p1TitleElem.style.color = 'white'
@@ -77,7 +68,7 @@ const changeColor = () => {
 
 const gameStart = () => {
   rollDiceBtn.addEventListener('click', () => {
-    if (p1TotalScore >= 10 || p2TotalScore >= 10) {
+    if (p1TotalScore >= 50 || p2TotalScore >= 50) {
       return
     }
 
@@ -86,7 +77,12 @@ const gameStart = () => {
 
     diceImgElem.src = `http://127.0.0.1:8080/assets/dice0${currentScore}.png`
 
+    diceImgElem.classList.add('visible')
     diceImgElem.classList.add('active')
+
+    diceImgElem.addEventListener('animationend', () => {
+      diceImgElem.classList.remove('active')
+    })
 
     if (currentScore < 3) {
       if (playerTurn) {
@@ -116,7 +112,7 @@ const gameStart = () => {
   })
 
   holdBtn.addEventListener('click', () => {
-    if (p1TotalScore >= 10 || p2TotalScore >= 10) {
+    if (p1TotalScore >= 50 || p2TotalScore >= 50) {
       return
     }
 
